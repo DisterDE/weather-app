@@ -1,6 +1,7 @@
 server:
   servlet:
     context-path: /weather
+    application-display-name: weather-service
 
 owm:
   api:
