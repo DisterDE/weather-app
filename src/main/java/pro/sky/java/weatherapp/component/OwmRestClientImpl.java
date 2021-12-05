@@ -27,7 +27,7 @@ public class OwmRestClientImpl implements OwmRestClient {
     @Override
     @Cacheable("weather_forecasts")
     public WeatherDto getWeather(String cityName) {
-        log.info("City doesn't exist in cache {}", cityName);
+        log.info("City doesn't exist in cache: {}", cityName);
         Map<String, String> params = new HashMap<>();
         params.put("cityName", cityName);
         params.put("apiKey", apiKey);
