@@ -16,4 +16,10 @@ public class WeatherMainDto {
             this.temp = WeatherUtils.convertToCelsius(temp);
         }
     }
+
+    public void setPressure(Integer pressure) {
+        if (pressure != null) {
+            this.pressure = WeatherUtils.convertToMmHg(pressure);
+        }
+    }
 }
