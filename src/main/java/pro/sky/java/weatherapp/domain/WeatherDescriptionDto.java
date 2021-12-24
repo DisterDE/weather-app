@@ -5,8 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class WeatherMainDto {
-    private Integer temp;
-    private Integer pressure;
-    private Integer humidity;
+public class WeatherDescriptionDto {
+    private String main;
+    private String icon;
 }

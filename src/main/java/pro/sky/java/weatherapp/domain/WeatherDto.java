@@ -8,4 +8,9 @@ import lombok.NoArgsConstructor;
 public class WeatherDto {
     private String name;
     private WeatherMainDto main;
+    private WeatherDescriptionDto weather;
+
+    public void setWeather(WeatherDescriptionDto[] weatherDescriptions) {
+        weather = weatherDescriptions[0];
+    }
 }
