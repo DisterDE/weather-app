@@ -18,7 +18,7 @@ services:
     ports:
       - "8081:8080"
 
-  weather-front:
+  weather-frontend:
     image: weather-frontend:0.0.1
     depends_on:
       weather-app:
