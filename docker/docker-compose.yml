@@ -3,6 +3,7 @@ version: '2.4'
 services:
   weather-app:
     image: weather-app:1.0
+    container_name: weather-app
     depends_on:
       weather-history-service:
         condition: service_started
@@ -12,7 +13,8 @@ services:
       - "8080:8080"
 
   weather-history-service:
-    image: weather-requests-history-service:2.0
+    image: weather-history-app:2.0
+    container_name: weather-history-app
     depends_on:
       postgres:
         condition: service_started
@@ -23,6 +25,7 @@ services:
 
   weather-frontend:
     image: weather-frontend:1.0
+    container_name: weather-frontend
     depends_on:
       weather-app:
         condition: service_started
@@ -33,6 +36,7 @@ services:
 
   postgres:
     image: postgres:latest
+    container_name: postgres
     restart: always
     environment:
       - POSTGRES_USER=admin
@@ -43,6 +47,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     restart: always
     depends_on:
       postgres:
