@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class OwmRestClientImpl implements OwmRestClient {
 
-    private static final String OWM_URL = "api.openweathermap.org/data/2.5/weather?q={cityName}&appid={apiKey}";
+    private static final String OWM_URL = "api.openweathermap.org/data/2.5/weather";
 
     @Value("${owm.api.key}")
     private String apiKey;
@@ -25,7 +25,9 @@ public class OwmRestClientImpl implements OwmRestClient {
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path(OWM_URL)
-                        .build(cityName, apiKey))
+                        .queryParam("q", cityName)
+                        .queryParam("appid", apiKey)
+                        .build())
                 .retrieve()
                 .bodyToMono(Weather.class)
                 .doOnError(e -> log.warn("Can't receive forecast for {}", cityName, e))
