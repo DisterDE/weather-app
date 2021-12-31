@@ -1,5 +1,6 @@
 package pro.sky.java.weatherapp.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,23 +11,15 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class OwmWeatherService implements WeatherService {
 
     private final OwmRestClient restClient;
     private final HistoryService historyService;
 
-    public OwmWeatherService(
-            OwmRestClient restClient,
-            HistoryService historyService
-    ) {
-        this.restClient = restClient;
-        this.historyService = historyService;
-    }
-
     @Override
     @SneakyThrows
     public Mono<Weather> getWeatherByCity(String cityName) {
-        log.info("Trying to retrieve weather forecast: {}", cityName);
         return restClient.getForecast(cityName)
                 .doOnSuccess(f ->
                         historyService.save(new HistoryRecord(cityName, f))
