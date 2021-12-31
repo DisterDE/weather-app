@@ -6,7 +6,7 @@ import pro.sky.java.weatherapp.util.WeatherUtils;
 
 @Data
 @NoArgsConstructor
-public class WeatherMainDto {
+public class WeatherMain {
     private Integer temp;
     private Integer pressure;
     private Integer humidity;

@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   weather-app:
-    image: weather-app:1.0
+    image: weather-app:2.0
     container_name: weather-app
     depends_on:
       weather-history-app:

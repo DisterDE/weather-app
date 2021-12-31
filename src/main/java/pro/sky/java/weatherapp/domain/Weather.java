@@ -5,12 +5,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class WeatherDto {
+public class Weather {
     private String name;
-    private WeatherMainDto main;
-    private WeatherDescriptionDto weather;
+    private WeatherMain main;
+    private WeatherDescription weather;
 
-    public void setWeather(WeatherDescriptionDto[] weatherDescriptions) {
+    public void setWeather(WeatherDescription[] weatherDescriptions) {
         weather = weatherDescriptions[0];
     }
 }
