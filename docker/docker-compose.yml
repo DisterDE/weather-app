@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   weather-app:
-    image: weather-app:1.0
+    image: disterru/weather-app
     container_name: weather-app
     depends_on:
       weather-history-app:
@@ -13,7 +13,7 @@ services:
       - "8080:8080"
 
   weather-history-app:
-    image: weather-history-app:2.1
+    image: disterru/weather-history-app
     container_name: weather-history-app
     depends_on:
       postgres:
@@ -24,7 +24,7 @@ services:
       - "8081:8080"
 
   weather-frontend:
-    image: weather-frontend:1.0
+    image: disterru/weather-frontend
     container_name: weather-frontend
     depends_on:
       weather-app:
@@ -35,7 +35,7 @@ services:
       - "80:8080"
 
   postgres:
-    image: postgres:latest
+    image: postgres
     container_name: postgres
     restart: always
     environment:

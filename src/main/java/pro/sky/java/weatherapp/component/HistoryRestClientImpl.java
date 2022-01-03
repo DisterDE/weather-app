@@ -1,26 +1,27 @@
 package pro.sky.java.weatherapp.component;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-import pro.sky.java.weatherapp.domain.HistoryRecordDto;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+import pro.sky.java.weatherapp.domain.HistoryRecord;
+import reactor.core.publisher.Mono;
 
+@Slf4j
 @Component
 public class HistoryRestClientImpl implements HistoryRestClient {
-
-    private final RestTemplate restTemplate;
 
     @Value("${history.url}")
     private String historyUrl;
 
-    public HistoryRestClientImpl(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-
     @Override
-    public HistoryRecordDto saveRecord(HistoryRecordDto record) {
-        HttpEntity<HistoryRecordDto> requestEntity = new HttpEntity<>(record);
-        return restTemplate.postForObject(historyUrl, requestEntity, HistoryRecordDto.class);
+    public Mono<HistoryRecord> saveRecord(HistoryRecord record) {
+        return WebClient.create()
+                .post()
+                .uri(historyUrl)
+                .body(BodyInserters.fromValue(record))
+                .retrieve()
+                .bodyToMono(HistoryRecord.class);
     }
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class HistoryRecordDto {
+public class HistoryRecord {
     private String cityName;
-    private String result;
+    private Weather result;
 }

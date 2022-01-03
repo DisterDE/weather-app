@@ -1,8 +1,9 @@
 package pro.sky.java.weatherapp.component;
 
-import pro.sky.java.weatherapp.domain.HistoryRecordDto;
+import pro.sky.java.weatherapp.domain.HistoryRecord;
+import reactor.core.publisher.Mono;
 
 public interface HistoryRestClient {
 
-    HistoryRecordDto saveRecord(HistoryRecordDto record);
+    Mono<HistoryRecord> saveRecord(HistoryRecord record);
 }

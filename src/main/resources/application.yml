@@ -1,6 +1,10 @@
-server:
-  servlet:
-    context-path: /weather
+spring:
+  webflux:
+    base-path: /weather
+  cache:
+    cache-names: weather_forecasts
+    caffeine:
+      spec: expireAfterWrite=30m
 
 owm:
   api:
@@ -8,9 +12,3 @@ owm:
 
 history:
   url: http://weather-history-app:8080/weather-history/records
-
-spring:
-  cache:
-    cache-names: weather_forecasts
-    caffeine:
-      spec: expireAfterWrite=30m

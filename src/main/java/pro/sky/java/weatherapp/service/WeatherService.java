@@ -1,7 +1,8 @@
 package pro.sky.java.weatherapp.service;
 
-import pro.sky.java.weatherapp.domain.WeatherDto;
+import pro.sky.java.weatherapp.domain.Weather;
+import reactor.core.publisher.Mono;
 
 public interface WeatherService {
-    WeatherDto getWeatherByCity(String cityName);
+    Mono<Weather> getWeatherByCity(String cityName);
 }
