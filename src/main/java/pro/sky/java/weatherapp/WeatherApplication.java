@@ -12,10 +12,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @SpringBootApplication
 @EnableCaching
-public class WeatherAppApplication {
+public class WeatherApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WeatherAppApplication.class, args);
+        SpringApplication.run(WeatherApplication.class, args);
     }
 
     @Bean
