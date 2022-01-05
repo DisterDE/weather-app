@@ -9,7 +9,7 @@ plugins {
 
 group = "pro.sky.java"
 version = "3.0"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()

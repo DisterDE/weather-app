@@ -1,4 +1,4 @@
-FROM disterru/java-win:11
+FROM disterru/java-win:17
 
 WORKDIR /app
 
