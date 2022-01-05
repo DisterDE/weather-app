@@ -1,15 +1,7 @@
-package pro.sky.java.weatherapp.util;
+package pro.sky.java.weatherapp.util
 
-public class WeatherUtils {
+import kotlin.math.roundToInt
 
-    private WeatherUtils() {
-    }
+fun Float.convertToCelsius() = this - 273.15f
 
-    public static int convertToCelsius(Float kelvinTemp) {
-        return Math.round(kelvinTemp - 273.15f);
-    }
-
-    public static int convertToMmHg(Integer hPa) {
-        return Math.round(hPa * 0.75f);
-    }
-}
+fun Int.convertToMmHg() = (this * 0.75f).roundToInt()
