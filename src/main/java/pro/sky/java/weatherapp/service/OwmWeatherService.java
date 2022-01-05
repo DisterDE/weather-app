@@ -20,6 +20,7 @@ public class OwmWeatherService implements WeatherService {
     @Override
     @SneakyThrows
     public Mono<Weather> getWeatherByCity(String cityName) {
+        log.info("Trying to get a forecast for {}", cityName);
         return restClient.getForecast(cityName)
                 .doOnSuccess(f ->
                         historyService.save(new HistoryRecord(cityName, f))
