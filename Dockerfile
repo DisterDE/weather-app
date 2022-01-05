@@ -1,13 +1,12 @@
-FROM disterru/java-win:11
+FROM disterru/java-win:17
 
 WORKDIR /app
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
-RUN dos2unix mvnw && chmod +x mvnw
-RUN ./mvnw dependency:go-offline
+RUN dos2unix gradlew && chmod +x gradlew
 
 COPY src ./src
 
-CMD ./mvnw spring-boot:run
+CMD ./gradlew bootRun
