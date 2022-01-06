@@ -15,8 +15,6 @@ class HistoryServiceImpl(
     override suspend fun save(record: HistoryRecord): HistoryRecord {
         log.info("Trying to save history record: {}", record)
         return historyRestClient.saveRecord(record)
-            .also {
-                log.info { "History record is saved: $it" }
-            }
+            .also { log.info { "History record is saved: $it" } }
     }
 }
