@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY gradle/ gradle
 COPY gradlew settings.gradle.kts build.gradle.kts ./
+COPY src ./src
 
 RUN dos2unix gradlew && chmod +x gradlew
-
-COPY src ./src
+RUN ./gradlew assemble
 
 CMD ./gradlew bootRun
