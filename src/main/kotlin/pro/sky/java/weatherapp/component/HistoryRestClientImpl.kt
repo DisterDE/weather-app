@@ -14,9 +14,8 @@ class HistoryRestClientImpl : HistoryRestClient {
     private lateinit var historyUrl: String
 
     override suspend fun saveRecord(record: HistoryRecord): HistoryRecord {
-        return WebClient.create()
+        return WebClient.create(historyUrl)
             .post()
-            .uri(historyUrl)
             .bodyValue(record)
             .retrieve()
             .bodyToFlow<HistoryRecord>()
