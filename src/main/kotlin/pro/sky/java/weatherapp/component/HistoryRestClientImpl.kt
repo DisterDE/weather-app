@@ -1,10 +1,10 @@
 package pro.sky.java.weatherapp.component
 
-import kotlinx.coroutines.reactor.awaitSingle
+import kotlinx.coroutines.flow.first
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
-import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.client.bodyToFlow
 import pro.sky.java.weatherapp.domain.HistoryRecord
 
 @Component
@@ -17,9 +17,9 @@ class HistoryRestClientImpl : HistoryRestClient {
         return WebClient.create()
             .post()
             .uri(historyUrl)
-            .body(BodyInserters.fromValue(record))
+            .bodyValue(record)
             .retrieve()
-            .bodyToMono(HistoryRecord::class.java)
-            .awaitSingle()
+            .bodyToFlow<HistoryRecord>()
+            .first()
     }
 }
