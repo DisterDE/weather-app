@@ -2,8 +2,8 @@ FROM disterru/java-win:17
 
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+COPY gradle/ gradle
+COPY gradlew settings.gradle.kts build.gradle.kts ./
 
 RUN dos2unix gradlew && chmod +x gradlew
 
