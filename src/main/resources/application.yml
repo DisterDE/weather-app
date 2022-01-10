@@ -5,10 +5,12 @@ spring:
     cache-names: weather_forecasts
     caffeine:
       spec: expireAfterWrite=30m
+  rabbitmq:
+    host: rabbit
 
 owm:
   api:
     key: 2217739da79d7ad63b2c2cbc0ec31d1f
 
 history:
-  url: http://weather-history-app:8080/weather-history/records
+  queue: weather-history

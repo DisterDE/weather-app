@@ -1,10 +1,12 @@
 package pro.sky.java.weatherapp.domain
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+
 class HistoryRecord(
     var cityName: String,
     var result: Weather
 ) {
     override fun toString(): String {
-        return "HistoryRecord(cityName='$cityName', result=$result)"
+        return jacksonObjectMapper().writeValueAsString(this)
     }
 }

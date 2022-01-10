@@ -20,11 +20,14 @@ class OwmWeatherService(
     override suspend fun getWeatherByCity(cityName: String): Weather {
         log.info("Trying to get a forecast for {}", cityName)
         return restClient.getForecast(cityName).also {
-            withContext(Dispatchers.IO) {
-                launch {
-                    historyService.save(HistoryRecord(cityName, it))
-                        .also { log.info { "History record saved $it" } }
-                }
+            saveHistoryRecord(HistoryRecord(cityName, it))
+        }
+    }
+
+    private suspend fun saveHistoryRecord(record: HistoryRecord) {
+        withContext(Dispatchers.IO) {
+            launch {
+                historyService.save(record)
             }
         }
     }

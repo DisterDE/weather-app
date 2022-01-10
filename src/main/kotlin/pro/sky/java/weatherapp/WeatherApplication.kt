@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean
 import org.springframework.web.reactive.function.server.coRouter
 import pro.sky.java.weatherapp.handler.WeatherHandler
 
-@SpringBootApplication
 @EnableCaching
+@SpringBootApplication
 class WeatherApplication {
     @Bean
     fun router(handler: WeatherHandler) = coRouter {
