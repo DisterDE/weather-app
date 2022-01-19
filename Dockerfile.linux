@@ -1,4 +1,4 @@
-FROM disterru/java-win:17
+FROM bellsoft/liberica-openjdk-alpine:17
 
 WORKDIR /app
 
@@ -6,7 +6,6 @@ COPY gradle/ gradle
 COPY gradlew settings.gradle.kts build.gradle.kts ./
 COPY src ./src
 
-RUN dos2unix gradlew && chmod +x gradlew
-RUN ./gradlew assemble
+RUN chmod +x gradlew && ./gradlew assemble
 
 CMD ./gradlew bootRun
